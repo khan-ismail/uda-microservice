@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "account")
+@Table(name = "accounts")
 @Getter
 @Setter
 @ToString
@@ -13,7 +13,7 @@ import lombok.*;
 public class AccountsEntity extends BaseEntity {
 
     @Id
-    private int accountNumber;
+    private Long accountNumber;
     private Long customerId;
     private String accountType;
     private String branchName;
