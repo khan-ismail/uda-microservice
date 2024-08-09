@@ -1,15 +1,24 @@
 package com.zerotoismail.account.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.zerotoismail.account.constant.AccountConstants;
+import com.zerotoismail.account.dto.AccountDto;
+import com.zerotoismail.account.dto.ResponseDto;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class AccountController {
 
-    @GetMapping
-    public String greet(){
-        return "Hello World";
+    @PostMapping("/create")
+    public ResponseEntity<ResponseDto> createAccount(@RequestBody AccountDto accountDto){
+
+        ResponseDto dto = new ResponseDto();
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new ResponseDto());
     }
 }
