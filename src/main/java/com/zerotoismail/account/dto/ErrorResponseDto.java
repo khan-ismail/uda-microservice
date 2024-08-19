@@ -12,5 +12,5 @@ public class ErrorResponseDto {
     private String apiPath;
     private HttpStatus errorCode;
     private String message;
-    private Date time;
+    private Long time;
 }
