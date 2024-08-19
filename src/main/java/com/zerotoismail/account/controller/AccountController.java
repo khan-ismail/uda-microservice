@@ -19,6 +19,6 @@ public class AccountController {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(new ResponseDto());
+                .body(new ResponseDto(AccountConstants.STATUS_201, AccountConstants.MESSAGE_201));
     }
 }
