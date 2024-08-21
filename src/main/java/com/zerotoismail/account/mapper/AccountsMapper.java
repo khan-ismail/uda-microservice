@@ -16,6 +16,8 @@ public class AccountsMapper {
 
     public static AccountsEntity mapToAccountsEntity(AccountDto accountDto) {
         AccountsEntity accountsEntity = new AccountsEntity();
+        accountsEntity.setCustomerId(accountDto.getAccountNumber());
+        accountsEntity.setAccountType(accountDto.getAccountType());
         accountsEntity.setAccountNumber(accountDto.getAccountNumber());
         accountsEntity.setAccountType(accountDto.getAccountType());
         accountsEntity.setBranchAddress(accountDto.getBranchAddress());
