@@ -5,8 +5,7 @@ import com.zerotoismail.account.entity.AccountsEntity;
 
 public class AccountsMapper {
 
-    public static AccountDto mapToAccountDto(AccountsEntity accountsEntity) {
-        AccountDto accountDto = new AccountDto();
+    public static AccountDto mapToAccountDto(AccountsEntity accountsEntity, AccountDto accountDto) {
         accountDto.setAccountNumber(accountsEntity.getAccountNumber());
         accountDto.setAccountType(accountsEntity.getAccountType());
         accountDto.setBranchAddress(accountsEntity.getBranchAddress());
@@ -14,10 +13,7 @@ public class AccountsMapper {
         return accountDto;
     }
 
-    public static AccountsEntity mapToAccountsEntity(AccountDto accountDto) {
-        AccountsEntity accountsEntity = new AccountsEntity();
-        accountsEntity.setCustomerId(accountDto.getAccountNumber());
-        accountsEntity.setAccountType(accountDto.getAccountType());
+    public static AccountsEntity mapToAccountsEntity(AccountDto accountDto, AccountsEntity accountsEntity) {
         accountsEntity.setAccountNumber(accountDto.getAccountNumber());
         accountsEntity.setAccountType(accountDto.getAccountType());
         accountsEntity.setBranchAddress(accountDto.getBranchAddress());

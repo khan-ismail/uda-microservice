@@ -31,7 +31,7 @@ public class AccountServiceImpl implements IAccountService {
 
     @Override
     public void createAccount(CustomerDto customerDto) {
-        CustomerEntity customerEntity = CustomerMapper.mapToCustomerEntity(customerDto);
+        CustomerEntity customerEntity = CustomerMapper.mapToCustomerEntity(customerDto, new CustomerEntity());
 
         Optional<CustomerEntity> optionCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
         if (optionCustomer.isPresent()) {
@@ -69,8 +69,8 @@ public class AccountServiceImpl implements IAccountService {
                 () -> new ResourcesNotFoundException("Account", "Customer Id", customer.getCustomerId().toString())
         );
 
-        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer);
-        customerDto.setAccount(AccountsMapper.mapToAccountDto(accounts));
+        CustomerDto customerDto = CustomerMapper.mapToCustomerDto(customer, new CustomerDto());
+        customerDto.setAccount(AccountsMapper.mapToAccountDto(accounts, new AccountDto()));
 
         return customerDto;
     }
@@ -85,7 +85,7 @@ public class AccountServiceImpl implements IAccountService {
             AccountsEntity accounts = accountsRepository.findById(accountDto.getAccountNumber()).orElseThrow(
                     () -> new ResourcesNotFoundException("Account", "AccountNumber", accountDto.getAccountNumber().toString())
             );
-            accounts = AccountsMapper.mapToAccountsEntity(accountDto);
+            AccountsMapper.mapToAccountsEntity(accountDto, accounts);
             accounts = accountsRepository.save(accounts);
 
             Long customerId = accounts.getCustomerId();
@@ -93,7 +93,7 @@ public class AccountServiceImpl implements IAccountService {
                     () -> new ResourcesNotFoundException("Customer", "CustomerId", customerId.toString())
             );
 
-            CustomerEntity customerEntity = CustomerMapper.mapToCustomerEntity(customerDto);
+            CustomerMapper.mapToCustomerEntity(customerDto, customer);
             customer.setEmail(customerDto.getEmail());
             customer.setName(customerDto.getName());
             customer.setMobileNumber(customerDto.getMobileNumber());
