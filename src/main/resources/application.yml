@@ -1,6 +1,8 @@
 spring:
   application:
     name: account
+  messages:
+    basename: messages,accounts
   datasource:
     url: jdbc:h2:mem:testdb
     username: sa
@@ -12,3 +14,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+accounts:
+  error:
+    notnull: "Must not be null"
+    notempty: "Must not be empty"
+    size: "Name must be minimum 2 character long"
